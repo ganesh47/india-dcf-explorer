@@ -102,8 +102,8 @@ export default function DCFBuilder() {
       <h1 className="text-xl font-bold text-slate-800">DCF Builder</h1>
 
       <ELI5Box>
-        <p>Imagine a mango tree that gives you fruit every year you can sell. Someone wants to buy it today — what should they pay? It depends on: how much fruit each year, how many years you keep it, and how much return you'd demand instead of leaving money in the bank. A DCF does exactly this for companies: it adds up all future free cash flows, converts them to today's money, then adds the value of the company's future beyond the forecast window (called terminal value).</p>
-        <p>Pick a company below. The blue bars are its real cash generation history. The green bars are what we project. The orange bar is the terminal value — notice it usually dwarfs everything else, which is why the growth assumption matters so much.</p>
+        <p>Imagine a mango tree that produces fruit you can sell every year. Someone wants to buy it today — what should they pay? It depends on: how much fruit it produces each year, and how much return you'd demand compared to investing in something equally risky. A DCF does exactly this for companies: it discounts each year's projected free cash flow back to today's money, then adds a terminal value — the lump-sum that represents all the cash flows beyond the explicit forecast period, assuming the business runs as a going concern forever.</p>
+        <p>Pick a company below. The blue bars are its actual cash generation history. The green bars are projections. The orange bar is the present value of terminal value — that is, the terminal value already discounted back to today. Notice it usually dwarfs the annual bars, which is why both the growth rate and the discount rate assumptions matter so much. Small changes in either move the valuation dramatically — that is exactly what the Sensitivity Matrix shows.</p>
       </ELI5Box>
 
       <FormulaBox
