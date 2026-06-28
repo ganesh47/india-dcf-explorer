@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ELI5Box from '../components/ELI5Box'
 import { useDuckDB } from '../db/useDuckDB'
 
 const QUERIES: { label: string; sql: string }[] = [
@@ -106,8 +107,14 @@ export default function Screener() {
     <div className="space-y-5">
       <h1 className="text-xl font-bold text-slate-800">Screener</h1>
       <p className="text-sm text-slate-500">
-        Run DuckDB SQL over 500+ companies in your browser. Click any result row to open it in DCF Builder.
+        Filter 100+ Indian companies by any financial metric. Click any result to open it in the DCF Builder.
       </p>
+
+      <ELI5Box>
+        <p>Before you value a company in detail, you need to find the right ones to look at. A screener is a filter — you set rules like "FCF yield above 5%" or "earns more than its cost of capital" and it returns only the companies that pass.</p>
+        <p>The pre-built filters below capture four classic value-investing questions: (1) Are you buying real cash flow cheaply? (2) Is the company actually creating value above its cost of capital? (3) Do the banks earn enough to justify their risk? (4) Which companies are investing heavily today and burning cash — potential growth stories or potential value traps?</p>
+        <p>You can edit the query to write your own filter. All financial data is queried live from the dataset — no page reload needed. Click any row to open that company's full DCF model.</p>
+      </ELI5Box>
 
       <div className="flex flex-wrap gap-2">
         {QUERIES.map((q) => (
@@ -135,7 +142,7 @@ export default function Screener() {
             disabled={!ready || loading}
             className="px-5 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold disabled:opacity-50 hover:bg-blue-700 transition-colors"
           >
-            {loading ? 'Running…' : 'Run Query'}
+            {loading ? 'Running…' : 'Run'}
           </button>
           {results.length > 0 && (
             <button onClick={exportCSV} className="px-4 py-2 rounded-lg border border-slate-300 text-sm text-slate-700 hover:bg-slate-50">
@@ -187,8 +194,7 @@ export default function Screener() {
 
       {!ran && (
         <div className="rounded-lg bg-slate-50 border border-slate-200 px-5 py-8 text-center text-sm text-slate-400">
-          Choose a pre-built query above or write your own SQL, then click Run Query.
-          <br />Tables: <code className="font-mono text-xs">companies.parquet</code>, <code className="font-mono text-xs">financials.parquet</code>, <code className="font-mono text-xs">sector_wacc.parquet</code>, <code className="font-mono text-xs">rates.parquet</code>, <code className="font-mono text-xs">banking.parquet</code>
+          Choose a pre-built filter above or write your own, then click Run.
         </div>
       )}
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import ReactECharts from 'echarts-for-react'
 import CompanySelector from '../components/CompanySelector'
 import FormulaBox from '../components/FormulaBox'
+import ELI5Box from '../components/ELI5Box'
 import { useDuckDB } from '../db/useDuckDB'
 import type { Company, Financials } from '../types'
 
@@ -112,8 +113,14 @@ export default function FCFWaterfall() {
     <div className="space-y-6">
       <h1 className="text-xl font-bold text-slate-800">FCF Waterfall</h1>
       <p className="text-sm text-slate-500">
-        Step by step: how EBITDA becomes Free Cash Flow — and why FCF ≠ PAT ≠ EBITDA.
+        Step by step: how operating profit becomes the cash a company actually generates.
       </p>
+
+      <ELI5Box>
+        <p>A company can report a large profit and still have no cash. Here is why: profit on paper (PAT) ignores the money a company must spend on new machines and factories (Capex), and the cash locked up in stock and unpaid bills (working capital). Free Cash Flow (FCF) is what is left after all of that — the money the owner can actually take out or reinvest.</p>
+        <p>The waterfall chart below shows each step of the journey from EBITDA to FCF. Green bars add to your cash; red bars take it away. The total at the end is the number that goes into the DCF model. Pick a capital-heavy company like a metals firm and then an IT company — notice how Capex eats far more of the profit in one versus the other.</p>
+        <p>The line chart on the right shows whether FCF tracks profit over time. A company where FCF is consistently below PAT should raise questions about earnings quality.</p>
+      </ELI5Box>
 
       <FormulaBox
         formula="FCF = EBIT×(1−t) + D&A − ΔNWC − Capex"

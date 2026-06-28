@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import ReactECharts from 'echarts-for-react'
 import SliderControl from '../components/SliderControl'
 import FormulaBox from '../components/FormulaBox'
+import ELI5Box from '../components/ELI5Box'
 
 const SECTORS = [
   { sector: 'FMCG / Staples', beta: 0.50, equityW: 0.85, debtW: 0.15, kd: 7.0 },
@@ -117,7 +118,13 @@ export default function WACCLab() {
   return (
     <div className="space-y-6">
       <h1 className="text-xl font-bold text-slate-800">WACC Lab</h1>
-      <p className="text-sm text-slate-500">Drag the sliders — all sector costs of equity and WACCs recalculate instantly.</p>
+      <p className="text-sm text-slate-500">Drag the sliders — all sector costs of capital recalculate instantly.</p>
+
+      <ELI5Box>
+        <p>When a company needs money to grow, it raises it from two sources: shareholders (equity) and lenders (debt). Each has a cost — lenders charge interest; shareholders expect returns. WACC (Weighted Average Cost of Capital) blends these two costs based on how much of each the company uses.</p>
+        <p>Think of it as the company's minimum pass mark. If a new project earns less than the WACC, the company is destroying value — even if the project is "profitable" on paper. Move the risk-free rate (what the government pays to borrow money) and equity risk premium (extra return investors demand for taking on Indian market risk) and watch how every sector's hurdle rate shifts.</p>
+        <p>Notice how Real Estate and Metals have much higher WACCs than FMCG — their businesses are riskier, so investors demand more return, making future cash flows worth less today.</p>
+      </ELI5Box>
 
       <FormulaBox
         formula="Ke = Rf + β × ERP    |    WACC = (E/V)×Ke + (D/V)×Kd×(1−t)"

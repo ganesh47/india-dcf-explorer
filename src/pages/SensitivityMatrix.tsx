@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ReactECharts from 'echarts-for-react'
 import SliderControl from '../components/SliderControl'
 import FormulaBox from '../components/FormulaBox'
+import ELI5Box from '../components/ELI5Box'
 
 const WACC_VALUES = [0.08, 0.085, 0.09, 0.095, 0.10]
 const G_VALUES = [0.02, 0.025, 0.03, 0.035, 0.04]
@@ -109,9 +110,15 @@ export default function SensitivityMatrix() {
       <div>
         <h1 className="text-xl font-bold text-slate-800">Sensitivity Matrix</h1>
         <p className="text-sm text-slate-500 mt-1">
-          How terminal value changes across WACC and perpetual growth rate combinations. Every cell is present value of terminal value only.
+          How the terminal value — the biggest driver of any DCF — changes when you nudge two key assumptions.
         </p>
       </div>
+
+      <ELI5Box>
+        <p>No one knows exactly how fast a company will grow forever, or exactly what return investors will demand. A DCF that pretends to have one precise answer is hiding its uncertainty. The honest version shows a range.</p>
+        <p>This grid tests every combination of two inputs: WACC (the discount rate, i.e., the investor's required return) and g (the long-run growth rate assumed to last forever). Red cells mean low terminal value; green means high. The range from the most pessimistic corner to the most optimistic is often 2–3× — with identical cash flow projections.</p>
+        <p>This is the single most important lesson in valuation: the answer is not a number, it is a range. Any analyst who gives you a single-point DCF without a sensitivity table is either overconfident or hiding something.</p>
+      </ELI5Box>
 
       <FormulaBox
         formula="PV(TV) = FCF₁₀ × (1+g) / (WACC−g) / (1+WACC)¹⁰"

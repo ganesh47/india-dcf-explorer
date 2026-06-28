@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ReactECharts from 'echarts-for-react'
+import ELI5Box from '../components/ELI5Box'
 import { useDuckDB } from '../db/useDuckDB'
 import type { Rate } from '../types'
 
@@ -104,9 +105,15 @@ export default function RateTracker() {
       <div>
         <h1 className="text-xl font-bold text-slate-800">Rate Tracker</h1>
         <p className="text-sm text-slate-500 mt-1">
-          G-Sec 10Y and RBI repo rate 2015–2026. The grey band is the typical AAA corporate borrowing range (repo + 150–200 bps).
+          The interest rate backdrop for every valuation — from the COVID lows to the 2022–23 hike cycle to the 2025 easing.
         </p>
       </div>
+
+      <ELI5Box>
+        <p>The 10-year government bond yield (G-Sec 10Y) is the starting point of every WACC calculation in India. It represents the return you can earn with zero risk — lending to the Indian government for 10 years. Everything else in finance is priced as a premium on top of this.</p>
+        <p>When the RBI raises the repo rate (the rate at which banks borrow from RBI overnight), it flows through to G-Sec yields, then to corporate borrowing costs. Higher rates mean: companies pay more to borrow, WACC rises, and future cash flows are worth less today — so share prices tend to fall even if earnings are unchanged.</p>
+        <p>The grey band on the chart shows the approximate range at which an AAA-rated Indian company can borrow. Notice how it tracks the repo rate with a roughly 150–200 basis point spread. Any company borrowing above this band is either perceived as risky or has weaker credit.</p>
+      </ELI5Box>
 
       <div className="grid grid-cols-3 gap-4 text-center">
         {latest && [

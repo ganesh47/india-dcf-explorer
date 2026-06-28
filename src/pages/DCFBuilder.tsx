@@ -4,6 +4,7 @@ import ReactECharts from 'echarts-for-react'
 import CompanySelector from '../components/CompanySelector'
 import SliderControl from '../components/SliderControl'
 import FormulaBox from '../components/FormulaBox'
+import ELI5Box from '../components/ELI5Box'
 import { useDuckDB } from '../db/useDuckDB'
 import type { Company, Financials } from '../types'
 
@@ -99,6 +100,11 @@ export default function DCFBuilder() {
   return (
     <div className="space-y-6">
       <h1 className="text-xl font-bold text-slate-800">DCF Builder</h1>
+
+      <ELI5Box>
+        <p>Imagine a mango tree that gives you fruit every year you can sell. Someone wants to buy it today — what should they pay? It depends on: how much fruit each year, how many years you keep it, and how much return you'd demand instead of leaving money in the bank. A DCF does exactly this for companies: it adds up all future free cash flows, converts them to today's money, then adds the value of the company's future beyond the forecast window (called terminal value).</p>
+        <p>Pick a company below. The blue bars are its real cash generation history. The green bars are what we project. The orange bar is the terminal value — notice it usually dwarfs everything else, which is why the growth assumption matters so much.</p>
+      </ELI5Box>
 
       <FormulaBox
         formula="PV = Σ FCFt/(1+WACC)^t + TV/(1+WACC)^n"

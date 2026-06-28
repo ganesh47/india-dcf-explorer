@@ -7,37 +7,37 @@ const TOOLS = [
   {
     to: '/dcf-builder',
     title: 'DCF Builder',
-    description: 'Pick any Indian company, adjust WACC and terminal growth, see enterprise value change in real time.',
+    description: 'Pick any Indian company, tune WACC and growth assumptions, and watch the intrinsic value update live.',
     color: 'blue',
   },
   {
     to: '/wacc-lab',
     title: 'WACC Lab',
-    description: 'Slide the risk-free rate and equity risk premium — watch all sector costs of equity recalculate.',
+    description: 'Move the risk-free rate or equity risk premium and see how every sector\'s cost of capital shifts instantly.',
     color: 'indigo',
   },
   {
     to: '/fcf-waterfall',
     title: 'FCF Waterfall',
-    description: 'See exactly why free cash flow ≠ PAT ≠ EBITDA for any company, step by step.',
+    description: 'Step through exactly how EBITDA becomes free cash flow — and why that number is very different from reported profit.',
     color: 'emerald',
   },
   {
     to: '/sensitivity',
     title: 'Sensitivity Matrix',
-    description: 'The WACC × terminal growth grid from the blog — interactive, with any company\'s FCF.',
+    description: 'See how dramatically a valuation changes with small tweaks to WACC and long-run growth. A range, not a point.',
     color: 'amber',
   },
   {
     to: '/rates',
     title: 'Rate Tracker',
-    description: 'RBI\'s full rate cycle 2015–2026: G-Sec 10Y + repo rate with every policy event annotated.',
+    description: 'RBI\'s full rate cycle 2015–2026: the risk-free rate that anchors every valuation, with every policy event marked.',
     color: 'rose',
   },
   {
     to: '/screener',
     title: 'Screener',
-    description: 'Run DuckDB SQL over 500+ companies. Pre-built: FCF yield > 5%, ROCE > WACC, ROE > 15%.',
+    description: 'Filter 100+ companies by any financial metric. Pre-built: FCF yield > 5%, ROCE > WACC, ROE > 15%.',
     color: 'violet',
   },
 ]
@@ -75,7 +75,7 @@ export default function Home() {
       <div className="rounded-2xl bg-gradient-to-br from-blue-700 to-blue-900 px-8 py-12 text-white">
         <h1 className="text-3xl font-bold mb-3">India DCF Explorer</h1>
         <p className="text-blue-100 text-lg max-w-2xl">
-          Discounted Cash Flow concepts made interactive — real Indian company data, queried in your browser with DuckDB, visualised with eCharts.
+          Learn how Indian companies are valued — from free cash flow to enterprise value — through interactive tools built on real market data.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
@@ -133,8 +133,8 @@ export default function Home() {
 
       {/* Dataset note */}
       <div className="rounded-lg bg-slate-100 border border-slate-200 px-5 py-4 text-sm text-slate-600">
-        <strong>Dataset:</strong> 500+ NSE-listed companies · Annual financials FY2021–FY2025 · 12 sector WACC benchmarks · Monthly G-Sec + repo rates 2015–2026 · 15 banks &amp; NBFCs.
-        Sources: NSE/BSE filings, Damodaran (NYU Stern), RBI DBIE. All data for educational use.
+        <strong>Data coverage:</strong> 100+ NSE-listed companies · Annual financials FY2021–FY2025 · 12 sector cost-of-capital benchmarks · Monthly G-Sec + repo rates 2015–2026 · 15 banks &amp; NBFCs.
+        Sources: NSE/BSE filings, Damodaran (NYU Stern), RBI DBIE. For educational use only.
       </div>
     </div>
   )
