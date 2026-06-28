@@ -47,7 +47,9 @@ export function DuckDBProvider({ children }: { children: React.ReactNode }) {
   const registerParquet = async (name: string) => {
     const instance = dbRef.current
     if (!instance || registered.has(name)) return
-    const url = `${import.meta.env.BASE_URL}data/${name}`
+    // DuckDB worker has no document context, so it cannot resolve relative URLs.
+    // Must supply an absolute URL with origin.
+    const url = `${window.location.origin}${import.meta.env.BASE_URL}data/${name}`
     await instance.registerFileURL(name, url, duckdb.DuckDBDataProtocol.HTTP, false)
     registered.add(name)
   }
