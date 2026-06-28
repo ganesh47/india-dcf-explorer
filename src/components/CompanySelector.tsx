@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function CompanySelector({ value, onChange }: Props) {
-  const { query, ready } = useDuckDB()
+  const { query, ready, loading } = useDuckDB()
   const [companies, setCompanies] = useState<Company[]>([])
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
@@ -140,7 +140,9 @@ export default function CompanySelector({ value, onChange }: Props) {
             ref={listRef}
             className="absolute z-30 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-slate-200 bg-white shadow-xl text-sm"
           >
-            {visible.length === 0 ? (
+            {loading && companies.length === 0 ? (
+              <li className="px-3 py-3 text-slate-400 text-center">Loading companies…</li>
+            ) : visible.length === 0 ? (
               <li className="px-3 py-3 text-slate-400 text-center">No companies found</li>
             ) : (
               visible.map((c, i) => (

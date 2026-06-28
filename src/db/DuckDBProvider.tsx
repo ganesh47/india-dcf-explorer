@@ -24,7 +24,7 @@ export function DuckDBProvider({ children }: { children: React.ReactNode }) {
       try {
         const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles()
         const bundle = await duckdb.selectBundle(JSDELIVR_BUNDLES)
-        const worker = new Worker(bundle.mainWorker!)
+        const worker = await duckdb.createWorker(bundle.mainWorker!)
         const logger = new duckdb.ConsoleLogger()
         const instance = new duckdb.AsyncDuckDB(logger, worker)
         await instance.instantiate(bundle.mainModule, bundle.pthreadWorker)
